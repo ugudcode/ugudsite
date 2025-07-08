@@ -61,17 +61,20 @@ body {
 }
 
 #tswcssbuttons ul li a {
-    color: #ffffff;
-    background-color: #4a4a4a; /* Dark grey background */
+    color: whitesmoke; /* Reddish text */
+    background-color: gray; /* White background */
+    border: 1.5px solid black; /* Matching border */
     text-decoration: none;
     display: block;
     padding: 12px 0;
-    border-radius: 4px;
-    transition: background-color 0.2s ease-in-out;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
 }
 
 #tswcssbuttons ul li a:hover {
-    background-color: #666666; /* Lighter grey on hover */
+    color: white;
+    background: linear-gradient(135deg, #ea00ff 30%, #00ccff 100%); /* Gold/brown on hover */
+    border-color: #000000; /* Match border color on hover */
     text-decoration: none;
 }
 
