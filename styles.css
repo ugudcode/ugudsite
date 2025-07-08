@@ -61,14 +61,14 @@ body {
 }
 
 #tswcssbuttons ul li a {
-    color: whitesmoke; /* Reddish text */
-    background-color: gray; /* White background */
-    border: 1.5px solid black; /* Matching border */
+    color: whitesmoke; 
+    background-color: gray; 
+    border: 1.5px solid black;
     text-decoration: none;
     display: block;
     padding: 12px 0;
     border-radius: 5px;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 #tswcssbuttons ul li a:hover {
@@ -83,6 +83,7 @@ body {
     float: right;
     width: 75%;
     background-color: #ffffff;
+	font-size: 20px;
 }
 
 /* Sidebar layout */
@@ -125,3 +126,41 @@ body {
 .song-entry audio {
     flex-grow: 1;
 }
+
+.song-list {
+    color: black;
+    font-size: 20px;
+}
+
+#projectsdisplay ul {
+	list-style: none;
+	padding: 4px;
+    margin: 1cm;
+}
+
+#projectsdisplay li {
+	margin-bottom: 8px;
+    padding-bottom: 1cm;
+}
+
+#projectsdisplay ul li a {
+	display: block;	
+	background-color: grey;
+    color: whitesmoke;
+	border: 1.5px solid black;
+    border-radius: 6px;
+	text-align: center;
+	text-decoration: none;
+    block-size: 60px;
+    transition: all 0.1s ease-in-out;
+
+}
+
+#projectsdisplay ul li a:hover {
+	display: block;	
+	background: linear-gradient(135deg, #ea00ff 30%, #00ccff 100%);
+	border: 1.5px solid white;
+	text-align: center;
+	text-decoration: none;
+}
+
