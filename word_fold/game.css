@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: darkgrey;
+    color: white;
+    /* Make body a flex container to center its children */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Ensure body takes up the full height of the screen */
+    min-height: 100vh;
+    margin: 0; /* Remove default browser margin */
+    
+}
+
+.header {
+    display: flex;
+    font-size: 40px;
+    text-shadow: 2px 2px 1px black;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.cell-holder {
+    display: grid;
+    border: 2px solid black;
+    background-color: lightgray;
+    border-radius: 8px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 60%;
+    aspect-ratio: 1/1;
+    gap: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 1px 1px  black;
+}
+
+.cell {
+    display: flex;
+    color: chocolate;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    overflow-wrap: anywhere;
+    border: 0.1px solid grey;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.cell:hover {
+    border-color: rgb(0, 204, 255);
+    transform: scale(1.1);
+    box-shadow: 2px 2px 1px 1px rgba(127, 255, 212, 0.274);
+}
+
+.cell.selected {
+    border: rgb(0, 255, 255) solid 8px;
+}
+
+.no-margin {
+    margin: 0 0;
+    padding: 30px;
+}
+
+div#words {
+    padding: 30px;
+}
