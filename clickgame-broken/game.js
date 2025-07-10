@@ -6,13 +6,13 @@ let super_gompei_count = 0;
 
 function changeScore(amount) {
     score += amount;
-    //set score element
+    score_element.textContent = score;
 
     // Update the stores to show ones that are too expensive
     for (let store of stores) {
         let cost = parseInt(store.getAttribute("cost"));
 
-        if (score > cost) {
+        if (score < cost) {
             store.setAttribute("broke", "");
         } else {
             store.removeAttribute("broke");
@@ -23,7 +23,10 @@ function buy(store) {
     const cost = parseInt(store.getAttribute("cost"));
 
     // check available to buy
+    if (score < cost) return;
+
     // change score
+    changeScore(-cost);
 
     if (store.getAttribute("name") === "Super-Gompei") {
         const super_gompei = document.querySelector("#widget-container #super-gompei")?.parentElement;
@@ -80,7 +83,7 @@ function showPoint(widget) {
     number.className = "point";
     number.innerHTML = "+" + widget.getAttribute("reap");
     number.onanimationend = () => {
-        number.removeChild(widget);
+        number.remove();
     }
     widget.appendChild(number);
 }
