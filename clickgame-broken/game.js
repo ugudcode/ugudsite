@@ -7,7 +7,6 @@ let super_gompei_count = 0;
 function changeScore(amount) {
     score += amount;
     score_element.textContent = score;
-
     // Update the stores to show ones that are too expensive
     for (let store of stores) {
         let cost = parseInt(store.getAttribute("cost"));
@@ -19,8 +18,9 @@ function changeScore(amount) {
         }
     }
 }
-function buy(store) {
+function buy(store, ) {
     const cost = parseInt(store.getAttribute("cost"));
+    
 
     // check available to buy
     if (score < cost) return;
@@ -69,19 +69,28 @@ function harvest(widget) {
     if (widget.hasAttribute("harvesting")) return;
     // Set harvesting flag
     widget.setAttribute("harvesting", "");
-
+ 
     // If manual, collect points now
-    changeScore(parseInt(widget.getAttribute("reap")));
-    showPoint(widget);
+    let reapAmount = parseInt(widget.getAttribute("reap"));
+
+    // If this is a Gompei, check for lawns and add to the reap amount
+    if (widget.getAttribute("name") === "Super-Gompei") {
+        const lawnCount = document.querySelectorAll('#widget-container .widget[name="Lawn"]').length;
+        reapAmount += (lawnCount * 10);
+    }
+
+    changeScore(reapAmount);
+    showPoint(widget, reapAmount);
 
     setup_end_harvest(widget);
 }
 
 
-function showPoint(widget) {
+function showPoint(widget, reapAmount) {
     let number = document.createElement("span");
     number.className = "point";
-    number.innerHTML = "+" + widget.getAttribute("reap");
+    // Use the calculated amount for the display, which includes bonuses
+    number.innerHTML = "+" + reapAmount;
     number.onanimationend = () => {
         number.remove();
     }
