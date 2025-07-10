@@ -1,20 +1,18 @@
 /* General Body Styles */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: #afafaf; /* A light grey-blue background */
+    background-color: #ffffff; /* A light grey-blue background */
     color: #1c1e21;
     margin: 0;
     padding: 0;
 }
 
 /* Gradient theme for header, sidebar, and footer */
-#tswheader,
-#tswsidecol,
-#tswfooter {
+#tswheader, #tswsidecol, #tswfooter {
     background: linear-gradient(-30deg, #f700ff 40%, #00fff2 130%);
     color: #ffffff; /* White text for better readability on the gradient */
-    
 }
+
 
 /* Add padding to the inner containers to avoid breaking float layout */
 #tswheader,

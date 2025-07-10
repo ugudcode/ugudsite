@@ -1,6 +1,6 @@
 console.log("hello world")
 
-let element = document.getElementById("tswcontainer")
+//let element = document.getElementById("tswcontainer")
 element.style.opacity = 1
 let angle = 0;
 let shouldrainbow = true;
