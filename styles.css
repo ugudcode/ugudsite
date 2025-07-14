@@ -8,7 +8,7 @@
 /* General Body Styles */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: #ffffff; /* A light grey-blue background */
+    background-color: #474747; /* A light grey-blue background */
     color: #1c1e21;
     margin: 0;
     padding: 25px;
@@ -21,9 +21,9 @@ body {
 
 /* Gradient theme for header, sidebar, and footer */
 #tswheader, #tswfooter {
-    background: linear-gradient(-30deg, #f700ff 40%, #00fff2 130%);
+    background: linear-gradient(135deg, rgba(234, 0, 255, 0.75) 30%, rgba(0, 204, 255, 0.75) 100%);
     color: #ffffff; 
-    border: #ffffff 1px solid;/* White text for better readability on the gradient */
+    border: #474747 1px solid;/* White text for better readability on the gradient */
     border-radius: 10px;
 }
 
@@ -202,7 +202,7 @@ body {
 
 #projectsdisplay ul li a:hover {
 	display: block;	
-	background: linear-gradient(135deg, #ea00ff 30%, #00ccff 100%);
+	background: linear-gradient(135deg, rgba(234, 0, 255, 0.75) 30%, rgba(0, 204, 255, 0.75) 100%);
 	border: 1.5px solid white;
 	text-align: center;
 	text-decoration: none;
@@ -217,7 +217,7 @@ body {
 /* When sidebar is open, expand it and push content */
 body:not(.sidebar-collapsed) #tswsidecol {
     width: 15%; /* Expand sidebar width. Ensure this matches the margin-left below. */
-    padding: 20px; /* Restore full padding */
+    padding-left: 30px; /* Restore full padding */
 }
 
 body:not(.sidebar-collapsed) #tswheader,
@@ -228,5 +228,5 @@ body:not(.sidebar-collapsed) #tswfooter {
 
 body:not(.sidebar-collapsed) {
     /* Reduce body padding when the sidebar is open to create a more spacious feel */
-    padding: 15px;
+    padding-left: 25px;
 }
