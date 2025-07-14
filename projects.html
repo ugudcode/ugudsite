@@ -6,16 +6,16 @@
     <title>Ugud Projects</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="all" href="styles.css">
-    <script src="virus.js" defer></script>
+    
 </head>
 
-<body>
+<body class="sidebar-collapsed">
 
     <div id="tswcontainer">
         <div id="tswheader">
             <!-- start of header section: insert your logo, etc, here -->
             <div class="header-content">
-                <img src="media/logo.png" id="insignia">
+                <img src="media/logo.png" class="insignia" id="toggle-sidebar">
                 <audio loop autoplay controls>
                     <source src="media/Lynyrd Skynyrd - Free Bird (Official Audio).mp3">
                 </audio>
@@ -45,7 +45,12 @@
                         </li>
                         <li>
                             <a href="word_fold/game.html" style="font-size: 40px;">
-                                Word Fold (Modernized)
+                                Word Fold
+                            </a>
+                        </li>
+                        <li>
+                            <a href="clickgame-broken/index.html" style="font-size: 40px;">
+                                Gompei's Eco Sim
                             </a>
                         </li>
                     </ul>    
@@ -61,10 +66,10 @@
 
                 <div id="tswcssbuttons">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="aboutme.html">About Me</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="songbank.html">Song Bank</a></li>
+                        <li><a href="index.html" title="Home"><img src="media/home.png" alt="Home"></a></li>
+                        <li><a href="aboutme.html" title="About Me"><img src="media/aboutme.png" alt="About Me"></a></li>
+                        <li><a href="projects.html" title="Projects"><img src="media/projects.png" alt="Projects"></a></li>
+                        <li><a href="songbank.html" title="Song Bank"><img src="media/songs.png" alt="Song Bank"></a></li>
                     </ul>
                 </div>
 
@@ -74,7 +79,6 @@
                 <!-- end of side column: put your navigation menu, etc, above this line -->
             </div>
         </div>
-        <div style="clear: both;"></div>
 
         <div id="tswfooter">
             <!-- start of footer section: insert your copyright notice, etc, here -->
@@ -87,7 +91,8 @@
         </div>
 
     </div>
-
+    <script src="virus.js" defer></script>
+    <script src="sidebar.js" defer></script>
 </body>
 
 </html>

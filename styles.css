@@ -1,23 +1,46 @@
+/* Set a better box model for all elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* General Body Styles */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     background-color: #ffffff; /* A light grey-blue background */
     color: #1c1e21;
     margin: 0;
-    padding: 0;
+    padding: 25px;
+    transition: padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#tswsidecol {
+    padding: 20px;
 }
 
 /* Gradient theme for header, sidebar, and footer */
-#tswheader, #tswsidecol, #tswfooter {
+#tswheader, #tswfooter {
     background: linear-gradient(-30deg, #f700ff 40%, #00fff2 130%);
-    color: #ffffff; /* White text for better readability on the gradient */
+    color: #ffffff; 
+    border: #ffffff 1px solid;/* White text for better readability on the gradient */
+    border-radius: 10px;
 }
 
+/* Modern "glassmorphism" style for the sidebar */
+#tswsidecol {
+    background-color: rgba(197, 197, 197, 0.75); /* Dark, semi-transparent background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
 
 /* Add padding to the inner containers to avoid breaking float layout */
 #tswheader,
 #tswfooter {
     padding: 20px;
+    transition: margin-left 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 #tswsideproper,
@@ -63,37 +86,54 @@ body {
 }
 
 #tswcssbuttons ul li a {
-    color: whitesmoke; 
-    background-color: gray; 
-    border: 1.5px solid black;
+    color: #f0f0f0; /* Softer white for text */
+    background-color: transparent;
+    border: none;
     text-decoration: none;
-    display: block;
-    padding: 12px 0;
-    border-radius: 5px;
-    transition: all 0.5s ease-in-out;
-    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    margin: 4px 10px; /* Add margin for spacing between items */
+    border-radius: 8px; /* Rounded corners for the hover effect */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    font-weight: 500;
 }
 
 #tswcssbuttons ul li a:hover {
-    color: white;
-    background: linear-gradient(135deg, #ea00ff 30%, #00ccff 100%);; /* Gold/brown on hover */
-    border-color: #000000; /* Match border color on hover */
-    text-decoration: none;
-    opacity: 1;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background highlight on hover */
+}
+
+#tswcssbuttons ul li a img {
+    height: 30px;
+    width: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+#tswcssbuttons ul li a:hover img {
+    transform: scale(1.1);
 }
 
 /* Content area styling */
 #tswcontent {
-    float: right;
-    width: 75%;
     background-color: #ffffff;
 	font-size: 20px;
+    transition: margin-left 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Sidebar layout */
+/* Sidebar layout - Push style */
 #tswsidecol {
-    float: left;
-    width: 25%;
+    position: fixed; /* Keep sidebar fixed on the left */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full viewport height */
+    width: 0; /* Start collapsed */
+    z-index: 1000;
+    overflow-x: hidden; /* Hide content when collapsed */
+    padding-top: 20px; /* Keep vertical padding */
+    padding-bottom: 20px;
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Header layout for logo and audio player */
@@ -101,10 +141,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
 }
 
-#tswheader #insignia {
+#tswheader .insignia {
+    cursor: pointer; /* Make the insignia feel clickable */
     max-height: 70px; /* Adjust logo size */
     flex-shrink: 0; /* Prevent logo from shrinking */
 }
@@ -168,3 +208,25 @@ body {
 	text-decoration: none;
 }
 
+/*Transition for the logo*/
+
+.insignia:hover {
+    transform: scale(130%);
+}
+
+/* When sidebar is open, expand it and push content */
+body:not(.sidebar-collapsed) #tswsidecol {
+    width: 15%; /* Expand sidebar width. Ensure this matches the margin-left below. */
+    padding: 20px; /* Restore full padding */
+}
+
+body:not(.sidebar-collapsed) #tswheader,
+body:not(.sidebar-collapsed) #tswcontent,
+body:not(.sidebar-collapsed) #tswfooter {
+    margin-left: 15%; /* Push content by the width of the sidebar */
+}
+
+body:not(.sidebar-collapsed) {
+    /* Reduce body padding when the sidebar is open to create a more spacious feel */
+    padding: 15px;
+}
