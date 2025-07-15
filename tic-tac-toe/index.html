@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TicTacToe</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="header">
+            <h1 id="title">TicTacToe</h1>
+        </div>
+
+        <div id="game-container">
+            <div class="cell" onclick="onmouseclick(0)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(1)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(2)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(3)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(4)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(5)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(6)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(7)"><div class="aligner"></div></div>
+            <div class="cell" onclick="onmouseclick(8)"><div class="aligner"></div></div>
+            
+        </div>
+        <div  id="options">
+            <input type="checkbox" onchange="togglecpu()">
+            <button onclick="reset()">Reset</button>
+        </div>
+        
+    </body>
+    <script src="game.js"></script>
+</html>
