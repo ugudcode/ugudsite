@@ -17,8 +17,6 @@ class Ball {
     move() {
         this.posx += this.velx;
         this.posy += this.vely;
-        console.log(this.velx, this.vely)
-
     }
 
     bounce(things) {

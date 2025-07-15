@@ -1,27 +1,138 @@
+/* General Reset & "Word Fold" Inspired Theme */
+:root {
+    --background-color: #f4f1ea; /* Off-white, paper-like */
+    --text-color: #1e1e1e; /* Off-black for text */
+    --board-color: #ffffff; /* White game board */
+    --primary-color: #6495ED;   /* Cornflower Blue for paddle */
+    --secondary-color: #FF7F50;/* Coral for the other paddle */
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --border-color: #d1cdc7;
+} 
+
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: "Courier New", Courier, monospace; /* Classic typewriter font */
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: aquamarine;
 }
 
+/* Main Game Title */
 h1 {
-    font-size: 60px;
-    margin: 0;
+    font-size: clamp(3rem, 10vw, 5rem); /* Responsive font size */
+    font-weight: 400; /* Regular weight for a softer feel */
+    color: var(--text-color);
 }
 
-h3 {
-    margin: 0;
-}
-
+/* Scoreboard Styling */
 #scoreboard {
-    font-size: 40px;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 0.5em;
+    letter-spacing: 0.1em;
 }
 
-#reset {
+/* Game Canvas Styling */
+#gameboard {
+    background-color: var(--board-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#gameboard.floating {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Controls Section */
+.controls {
+    margin-top: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+/* Modern Checkbox for CPU Toggle */
+.controls label {
+    font-size: 1rem;
     cursor: pointer;
-    border-radius: 15px;
-    width: 100px;
-    height: 50px;
-    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: center;
+}
+
+.controls input[type="checkbox"] {
+    cursor: pointer;
+    margin-right: 0.5em;
+    /* Hides the default checkbox */
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid var(--text-color);
+    border-radius: 4px;
+    position: relative;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.controls input[type="checkbox"]:checked {
+    background-color: var(--text-color);
+}
+
+.controls input[type="checkbox"]:checked::after {
+    content: '✔';
+    font-size: 1em;
+    color: var(--background-color); /* Paper color check on ink background */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.controls input[type="number"] {
+    width: 60px;
+    padding: 0.4em;
+    background-color: var(--board-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Button Styling */
+button {
+    padding: 0.5em 1.5em;
+    background-color: var(--board-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+button:hover, button:focus {
+    background-color: #f8f5f0; /* a slightly different off-white */
+    border-color: #c1bdb8;
+    outline: none;
+}
+
+button:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px);
 }

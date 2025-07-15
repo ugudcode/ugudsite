@@ -8,15 +8,30 @@ function updateScore(model) {
 }
 
 function draw_game(model) {
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
     draw_ball(ctx, model.ball);
     draw_paddle(ctx, model.paddleL);
     draw_paddle(ctx, model.paddleR);
+
+    if (model.state === STATE.PAUSED) {
+        ctx.fillStyle = "rgba(255, 255, 255, 0.85)"; /* White, slightly transparent overlay */
+        ctx.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+        ctx.fillStyle = "#1e1e1e"; // Ink black text
+        ctx.font = "50px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("PAUSED", BOARD_WIDTH / 2, BOARD_HEIGHT / 2);
+
+        // Add a helpful message on the initial pause screen
+        if (model.scoreL === 0 && model.scoreR === 0) {
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Press Space to Start", BOARD_WIDTH / 2, BOARD_HEIGHT / 2 + 50);
+        }
+    }
 }
 
 function draw_ball(ctx, ball) {
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#1e1e1e"; // Ink black ball
     ctx.beginPath();
     const x = ball.posx;
     const y = ball.posy;
