@@ -2,9 +2,6 @@ let model = new Model();
 
 function onTick() {
     switch (model.state) {
-        case STATE.STARTUP:
-            model.state = STATE.PLAYING;
-            break;
         case STATE.PLAYING:
             model.state = play();
             break;
@@ -20,8 +17,25 @@ function onTick() {
 }
 
 function play() {
-    model.paddleL.move(false, model.ball);
+    // In simulation mode, both paddles are CPUs. Otherwise, check the CPU toggle for the right paddle.
+    model.paddleL.move(model.is_simulation, model.ball);
     model.paddleR.move(model.is_cpu, model.ball);
+
+    // Handle paddle charging
+    if (model.paddleL.isCharging) {
+        model.paddleL.charge = Math.min(MAX_CHARGE, model.paddleL.charge + CHARGE_RATE);
+    }
+    // Right paddle charges if it's a CPU (in regular or sim mode) or a human player holding the charge key.
+    if (model.is_cpu || model.paddleR.isCharging) {
+        model.paddleR.charge = Math.min(MAX_CHARGE, model.paddleR.charge + CHARGE_RATE);
+    }
+
+    // If not a human player, explicitly set isCharging for paddleR based on its own AI logic.
+    if (model.is_cpu) {
+        model.paddleR.isCharging = model.paddleR.isCharging;
+    }
+
+
     model.ball.move();
 
     let scoreSide = model.ball.bounce([model.paddleL, model.paddleR]);
@@ -40,19 +54,5 @@ function play() {
     return STATE.PLAYING;
 }
 
-function startGamePaused() {
-    // The model is constructed with a state of STARTUP and a ball with initial velocity.
-    
-    // 1. Manually transition to a paused state.
-    model.state = STATE.PAUSED;
-
-    // 2. Save the initial velocity that was set in resetBall() and zero it out.
-    model.pausedVelocity = [model.ball.velx, model.ball.vely];
-    model.ball.velx = 0;
-    model.ball.vely = 0;
-
-    // 3. Draw the initial screen. The game loop is not running yet.
-    draw_game(model);
-}
-
-startGamePaused();
+// Initial draw of the game board. It will be in its default PAUSED state.
+draw_game(model);

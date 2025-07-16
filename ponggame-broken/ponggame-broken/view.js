@@ -2,14 +2,24 @@ const canvas = document.getElementById("gameboard");
 const ctx = canvas.getContext("2d");
 const cpucheck = document.getElementById("cpucheck");
 const scoreboard = document.getElementById("scoreboard");
+const p1ScoreElem = document.getElementById("p1-score");
+const p2ScoreElem = document.getElementById("p2-score");
+const p1ChargeBar = document.getElementById('p1-charge-bar');
+const p2ChargeBar = document.getElementById('p2-charge-bar');
 
 function updateScore(model) {
-    scoreboard.innerHTML = `${model.scoreL} : ${model.scoreR}`;
+    if (p1ScoreElem) p1ScoreElem.textContent = model.scoreL;
+    if (p2ScoreElem) p2ScoreElem.textContent = model.scoreR;
 }
 
 function draw_game(model) {
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+
+    // Update charge bars
+    p1ChargeBar.style.width = `${model.paddleL.charge}%`;
+    p2ChargeBar.style.width = `${model.paddleR.charge}%`;
+
     draw_ball(ctx, model.ball);
     draw_paddle(ctx, model.paddleL);
     draw_paddle(ctx, model.paddleR);
@@ -41,6 +51,8 @@ function draw_ball(ctx, ball) {
 }
 
 function draw_paddle(ctx, paddle) {
-    ctx.fillStyle = paddle.color;
+    // BUG FIX: Provide visual feedback for charging by changing color
+    // Glows gold when charge is building
+    ctx.fillStyle = paddle.charge > 0 ? '#FFD700' : paddle.color;
     ctx.fillRect(paddle.posx, paddle.posy, paddle.width, paddle.height);
 }
