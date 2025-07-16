@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Planet Name Generator</title>
+    <link rel="stylesheet" href="aistyles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Planet Creator</h1>
+            <h3>Use AI to Create Your Own Planet!</h3>
+        </header>
+        <main>
+            <div class="input-section">
+                <div id="api-key-section">
+                    <label for="api-key">API Key:</label>
+                    <input type="text" id="api-key" placeholder="Enter your API key">
+                    <button id="save-api-key">Save API Key</button>
+                </div>
+                <div id="configuration">
+                    <label for="biome">What Biome or Biome's are on this Planet? </label>
+                    <input type="text" id="biome" placeholder="Enter biome/s">
+                    <label for="size">What Size is your Planet? </label>
+                    <select id="size">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                    <label for="life">Is there Life? </label>
+                    <input type="checkbox" id="life">
+                    <label for="story">Write a Story? </label>
+                    <input type="checkbox" id="story">
+                </div>
+            </div>
+            <button id="generate-planet" class="generate-btn">Generate Planet</button>
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Generating Planet...</p>
+            </div>
+            <div class="planet-section">
+                <h2>Generated Planet</h2>
+                <div id="planetContent">
+                    <p id="planet-text">Planet Content Goes Here</p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    
+</body>
+</html>
