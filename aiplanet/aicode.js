@@ -94,11 +94,10 @@ class AIPlanetAP {
             this.displayPlanet(recipe);
         } catch (error) {
             this.showLoading(false);
-            this.showError('An error occurred while generating the planet. Please check your API key');
+            this.showError(error);
+            throw error;
         } finally {
             this.showLoading(false);
-            this.showGeneration();
-        
         }
     }
 
@@ -158,21 +157,26 @@ class AIPlanetAP {
         alert(message);
     }
 
-    showGeneration(recipe) {
-        const formattedRecipe = this.formatRecipe(recipe);
-        this.planetOutput.innerHTML = formattedRecipe;
-        this.planetSection.classList.add('show');
-        this.planetSection.scrollIntoView({ behavior: 'smooth' });
+    showGeneration() {
+        
+        this.planetContent.classList.add('show');
+        this.planetContent.scrollIntoView({ behavior: 'smooth' });
     }
 
-    formatRecipe(recipe) {
+    displayPlanet(recipe) {
+        const formattedRecipe = this.formatRecipe(recipe);
+        this.planetOutput.innerHTML = formattedRecipe;
+        this.showGeneration();
+    }
+
+    formatRecipe(text) {
         text = text.replace(/(^| ) +/gm, '$1');
         text = text.replace(/^- */gm, '');
         text = text.replace(/\*\*(.*?)\*\*/gm, '<strong>$1</strong>');
         text = text.replace(/^(.+)/g, '<h3>$1</h3>');
         text = text.replace(/^\*/gm, '•');
         text = text.replace(/^(.+)/gm, '<p>$1</p>');
-        return recipe;
+        return text;
     }
 
 
