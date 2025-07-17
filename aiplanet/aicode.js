@@ -166,6 +166,12 @@ class AIPlanetAP {
     }
 
     formatRecipe(recipe) {
+        text = text.replace(/(^| ) +/gm, '$1');
+        text = text.replace(/^- */gm, '');
+        text = text.replace(/\*\*(.*?)\*\*/gm, '<strong>$1</strong>');
+        text = text.replace(/^(.+)/g, '<h3>$1</h3>');
+        text = text.replace(/^\*/gm, '•');
+        text = text.replace(/^(.+)/gm, '<p>$1</p>');
         return recipe;
     }
 
@@ -173,9 +179,6 @@ class AIPlanetAP {
     hideGeneration() {
         this.planetContent.style.display = 'none';
     }
-
-
-
 
     showLoading(show) {
         if (show) {
@@ -186,10 +189,7 @@ class AIPlanetAP {
             this.loading.classList.remove('show');
             this.generateButton.disabled = false;
             this.generateButton.textContent = 'Generate Planet';
-
         }
-        
-    
     }
 
 }
