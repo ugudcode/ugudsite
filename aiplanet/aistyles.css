@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: black;
+    background-image: url("https://th.bing.com/th/id/OIP.K6Y-x8EIG0T2Gd9d_MfVigHaEK?w=271&h=180&c=7&r=0&o=7&pid=1.7&rm=3");
     color: #333;
     min-height: 100vh;
 }
@@ -26,7 +26,7 @@ header {
 header h1 {
     font-size: 3rem;
     margin-bottom: 10px;
-    text-shadow: 2px, 2px, 4px rgb(151, 151, 151);
+    text-shadow: 2px, 2px, 4px rgb(2, 255, 255);
 }
 
 header h3 {
@@ -38,19 +38,19 @@ main {
     background-color: white;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 238, 255, 0.548);
 }
 
 .input-section,
 .planet-section,
 .loading {
-    margin-bottom: 0 auto 30px;
+    margin: 0 auto 30px;
     text-align: center;
 }
 
 #generate-planet {
-    text-align: center;
-    margin-bottom: 40px;
+    display: block;
+    margin: 0 auto 40px;
 }
 
 #api-key-section,
@@ -96,5 +96,3 @@ label {
     0% {transform: rotate(0deg); }
     100% {transform: rotate(360deg);}
 }
-
-
