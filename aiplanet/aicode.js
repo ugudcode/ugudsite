@@ -148,5 +148,50 @@ class AIPlanetAP {
 
         const data = await response.json();
         return data.candidates[0].content.parts[0].text.trim();
-    }      
+    }    
+    
+    showError(message) {
+        alert(message);
+    }
+
+    showSuccess(message) {
+        alert(message);
+    }
+
+    showGeneration(recipe) {
+        const formattedRecipe = this.formatRecipe(recipe);
+        this.planetOutput.innerHTML = formattedRecipe;
+        this.planetSection.classList.add('show');
+        this.planetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    formatRecipe(recipe) {
+        return recipe;
+    }
+
+
+    hideGeneration() {
+        this.planetContent.style.display = 'none';
+    }
+
+
+
+
+    showLoading(show) {
+        if (show) {
+            this.loading.classList.add('show');
+            this.generateButton.disabled = true;
+            this.generateButton.textContent = 'Generating...';
+        } else {
+            this.loading.classList.remove('show');
+            this.generateButton.disabled = false;
+            this.generateButton.textContent = 'Generate Planet';
+
+        }
+        
+    
+    }
+
 }
+
+document.addEventListener('DOMContentLoaded', () => new AIPlanetAP());
